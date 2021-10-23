@@ -8,8 +8,19 @@
 from db import myMySQLDB
 from excel import excel
 
+import sys
+
 def main():
-    db = myMySQLDB( "mysql", "localhost", "root", "Ww20080811", "pythontoexcel")
+    testCase()
+
+def testCase():
+
+    db = myMySQLDB( "mysql", "localhost", "3306", "root", "Ww20080811", "pythontoexcel", "test1")
+    wb = excel(workbook="test1.xlsx", worksheet="Sheet1")
+
+    for i in range(1, wb.worksheet_row_cnt + 1):
+        testline = wb.readLine(i)
+        db.insertLine(testline, i)
 
 if __name__ == "__main__":
     main()
