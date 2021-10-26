@@ -22,18 +22,8 @@ class excel():
         self.workbook = workbook
         self.worksheet = worksheet
 
-        if(exists(workbook)):
-            pass    #workbook exist
-        else:
-            print(workbook, " , file does not exist!")  #workbook not exist
-            exit()
-
-        try:
-            self.workbook = load_workbook(workbook)     #check worksheet exist
-        except:
-            print(worksheet," , file not support!") #worksheet note exist
-            exit();
-        
+        self.isWorkbookExist()
+        self.isWorksheetExist()
 
         if self.worksheet in self.workbook.sheetnames:
             self.worksheetObj = self.workbook[self.worksheet]
@@ -42,6 +32,20 @@ class excel():
         else:
             print(worksheet, " , worksheet does not exist!")
             exit()
+
+    def isWorkbookExist( self):
+        if(exists(self.workbook)):
+            pass    #workbook exist
+        else:
+            print(self.workbook, " , file does not exist!")  #workbook not exist
+            exit()
+
+    def isWorksheetExist( self):
+        try:
+            self.workbook = load_workbook(self.workbook)     #check worksheet exist
+        except:
+            print(self.worksheet," , file not support!")     #worksheet note exist
+            exit();
 
     def readLine( self, row):
         result = []
