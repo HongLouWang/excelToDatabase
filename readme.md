@@ -52,10 +52,23 @@ Prepared by:
 | Rationale         | Let user input the excel range, insert the range of excel worksheet into datbase |
 | Triggers          | User type in command|
 | Preconditions     | Program start, database connection establishment, excel file and worksheet exist, user inputed excel worksheet exist in workbook |
-| Actions           | 1. Read user inputed excel worksheet range <br >2. Insert each line into database |
+| Actions           | 1. Read user inputed excel worksheet range and convert it to openpyxl understandable range. <br >2. Insert each line into database |
 | Alternative paths | 1. If database connection not established, return and notice the user.<br >2. If the user inputed excel file or worksheet not exist, return and notice the user.<br >3. If the user inputed excel worksheet range is not exist or out of range, return and notice the user.<br >4. In step 2, if data cannot insert into database, return and notice the user which line throw error.|
 | Postconditions    | User selected excel worksheet range inserted into database|
 | Acceptance tests  | Make sure the excel worksheet range inserted into the database successfully! |
+| Iteration         | **#2**                                                       |
+
+| Use case # 5      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Name              | **Insert excel data by user inputed dictionary**   |
+| Users             | User                                                  |
+| Rationale         | Let user input a dictionary, then insert the data from excel worksheet to the database by user inputed dictionary |
+| Triggers          | User type in command|
+| Preconditions     | Program start, database connection establishment, excel file and worksheet exist, user inputed dictionary matched each other |
+| Actions           | 1. Read user inputed dictionary <br >2. Insert the data from worksheet by dictionary- |
+| Alternative paths | 1. If database connection not established, return and notice the user.<br >2. If the user inputed excel file or worksheet not exist, return and notice the user.<br >3. If the user inputed dictionary does not match each other, return and notice the user.<br >4. In step 2, if data cannot insert into database, return and notice the user which line throw error.|
+| Postconditions    | User selected excel worksheet range inserted into database by user inputed dictionary|
+| Acceptance tests  | Make sure the excel worksheet range inserted into the database by user inputed dictionary successfully! |
 | Iteration         | **#2**                                                       |
 
 
@@ -126,3 +139,14 @@ Prepared by:
 | Assignee          | Shutian Wang|
 | Status            | Open|
 | Task              | Read the excel worksheet data which selected by the user, Insert it to the database line by line.|
+
+| TODO Task # 7      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **2**   |
+| User case         | 5                                       |
+| Create date       | 2021-10-26 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-10-26 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Read the dictionary inputed by user, assemble sql query and insert to the database line by line according to the user inputed dictionary|

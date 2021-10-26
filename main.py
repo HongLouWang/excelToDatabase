@@ -19,9 +19,17 @@ def testCase():
     wb = excel(workbook="test1.xlsx", worksheet="Sheet1")
 
     for i in range(1, wb.worksheet_row_cnt + 1):
-        testline = wb.readLine(i)
+        testline = wb.readLineWithRange(i, 1, 5)
+        #print(testline)
         db.insertLine(testline, i)
 
+def testCase2():
+    print(ord("A") - 64)
+
+def testCase3():
+    wb = excel(workbook="test1.xlsx", worksheet="Sheet1")
+    print(wb.letterNumRangeConverter(1,"A",1,"BA"))
+    print(wb.getCellData(1,53))
 if __name__ == "__main__":
     main()
 
