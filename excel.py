@@ -6,15 +6,16 @@
 #############################################################################################
 
 from typing import overload
-from dns.rdatatype import NULL
+# from dns.rdatatype import NULL
 from os.path import exists
+# from dns.rdatatype import NULL
 from openpyxl import load_workbook
 
 class excel():
 
     workbook = ""       #Excel文件
     worksheet = ""      #Excel文件中的表格
-    worksheetObj = NULL
+    worksheetObj = None
 
     worksheet_col_cnt = 0
     worksheet_row_cnt = 0
@@ -65,6 +66,7 @@ class excel():
         col_int = 0
         for i in col:
             col_int = col_int * 26 + (ord(i.upper()) - ord('A')) + 1
+        return col_int
 
     def getCellData(self, row, col):
         # summary: return the designated cell value, for test propuse only
@@ -78,9 +80,25 @@ class excel():
             result.append(str(cellObj.value))
         return result
 
-    def readLineWithRange(self, row, col_start, col_range):
+    def readLineWithRange(self, row, col_start, col_end):
         result = []
-        for i in range(col_start, col_range + 1):
+        for i in range(col_start, col_end + 1):
             cellObj = self.worksheetObj.cell(row = row, column = i)
             result.append(str(cellObj.value))
+        return result
+
+    def readLineByUserDictRange(self, row, userDict):
+        result = []
+        userDictExcelList = []
+
+        userDictExcel = userDict[0:userDict.find("=")]
+        userDictExcel = userDictExcel.replace("[","")
+        userDictExcel = userDictExcel.replace("]","")
+
+        userDictExcelList= userDictExcel.split(",")
+
+        for i in range(0, len(userDictExcelList)):
+            cellObj = self.worksheetObj.cell(row = row, column = self.letterNumColConverter(userDictExcelList[i]))
+            result.append(str(cellObj.value))
+
         return result
