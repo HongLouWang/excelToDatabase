@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("excelTest")]
+[assembly: AssemblyTitle("excelToDatabase")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("excelTest")]
+[assembly: AssemblyProduct("excelToDatabase")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b58116ec-a53f-437a-b3a1-12bba3047a0b")]
+[assembly: Guid("f03294cc-a6b8-46eb-a69c-61ceca5d6791")]
 
 // Version information for an assembly consists of the following four values:
 //
