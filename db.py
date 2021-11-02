@@ -5,7 +5,7 @@
 #Project:   Load Excel To Database
 #############################################################################################
 
-from dns.rdatatype import NULL
+# from dns.rdatatype import NULL
 
 import mysql.connector as mysql
 from mysql.connector import errorcode
@@ -21,11 +21,11 @@ class myMySQLDB():
 
     myDBTable = ""
 
-    mydb = NULL
-    myDBCursor = NULL
+    mydb = None
+    myDBCursor = None
 
     #Init MySQL Database
-    def __init__( self, dbtype, dbip, dbport, dbuser, dbpass, dbname, mydbTable):
+    def __init__( self, dbtype, dbip, dbport, dbuser, dbpass, dbname, dbTable):
         if dbtype != "":
             self.myDBType = dbtype
         else:
@@ -61,8 +61,8 @@ class myMySQLDB():
             print("Database name cannot be empty!")
             exit()  
 
-        if mydbTable != "":
-            self.myDBTable = mydbTable
+        if dbTable != "":
+            self.myDBTable = dbTable
         else:
             print("Table name cannot be empty!")
             exit()
@@ -115,6 +115,32 @@ class myMySQLDB():
             val = val + " '" + line[i] + "', "
         val = val + "'" + line[len(line) - 1] + "'"
         sql = "INSERT INTO " + self.myDBTable + " VALUES (" + val + ")"
+        try:
+            self.myDBCursor.execute(sql)
+            self.mydb.commit()
+        except:
+            print("Line ", line_cnt, " cannot insert into database!")
+
+    def insertLineByUserDict( self, userDict, line, line_cnt):
+        val = ""
+        col_name = ""
+        userDictDBList = []
+        userDict = userDict[userDict.find("=") + 1:]
+        userDict = userDict.replace("[","")
+        userDict = userDict.replace("]","")
+
+        userDictDBList = userDict.split(",")
+
+        for i in range(0, len(userDictDBList) - 1):
+            col_name = col_name + " " + userDictDBList[i] + ", "
+        col_name = col_name + userDictDBList[len(userDictDBList) - 1]
+
+        for i in range(0, len(line) - 1):
+            val = val + " '" + line[i] + "', "
+        val = val + "'" + line[len(line) - 1] + "'"
+
+        sql = "INSERT INTO " + self.myDBTable + " (" + col_name + ") VALUES (" + val + ")"
+
         try:
             self.myDBCursor.execute(sql)
             self.mydb.commit()

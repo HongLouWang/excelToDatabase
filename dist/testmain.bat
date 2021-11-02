@@ -1,0 +1,1 @@
+W:\Python\excelToDatabase\dist\main.exe test1.xlsx Sheet1 mysql localhost 3306 root Ww20080811 pythontoexcel test1 [A,B,C,D,F]=[id,c1,c2,c3,c4]

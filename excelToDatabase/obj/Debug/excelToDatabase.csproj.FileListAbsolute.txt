@@ -1,0 +1,10 @@
+W:\Python\excelToDatabase\excelToDatabase\bin\Debug\excelToDatabase.exe.config
+W:\Python\excelToDatabase\excelToDatabase\bin\Debug\excelToDatabase.exe
+W:\Python\excelToDatabase\excelToDatabase\bin\Debug\excelToDatabase.pdb
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.csproj.AssemblyReference.cache
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.Properties.Resources.resources
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.csproj.GenerateResource.cache
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.csproj.CoreCompileInputs.cache
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.exe
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.pdb
+W:\Python\excelToDatabase\excelToDatabase\obj\Debug\excelToDatabase.Form1.resources

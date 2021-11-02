@@ -5,7 +5,6 @@
 #Project:   Load Excel To Database
 #############################################################################################
 
-from dns.rdatatype import NULL
 from os.path import exists
 from openpyxl import load_workbook
 
@@ -13,27 +12,17 @@ class excel():
 
     workbook = ""       #Excel文件
     worksheet = ""      #Excel文件中的表格
-    worksheetObj = NULL
+    worksheetObj = None
 
     worksheet_col_cnt = 0
     worksheet_row_cnt = 0
 
-    def __init__( self, workbook, worksheet):
+    def __init__(self, workbook, worksheet):
         self.workbook = workbook
         self.worksheet = worksheet
 
-        if(exists(workbook)):
-            pass    #workbook exist
-        else:
-            print(workbook, " , file does not exist!")  #workbook not exist
-            exit()
-
-        try:
-            self.workbook = load_workbook(workbook)     #check worksheet exist
-        except:
-            print(worksheet," , file not support!") #worksheet note exist
-            exit();
-        
+        self.isWorkbookExist()
+        self.isWorksheetExist()
 
         if self.worksheet in self.workbook.sheetnames:
             self.worksheetObj = self.workbook[self.worksheet]
@@ -43,9 +32,75 @@ class excel():
             print(worksheet, " , worksheet does not exist!")
             exit()
 
-    def readLine( self, row):
+    def isWorkbookExist(self):
+        if(exists(self.workbook)):
+            pass    #workbook exist
+        else:
+            print(self.workbook, " , file does not exist!")  #workbook not exist
+            exit()
+
+    def isWorksheetExist(self):
+        try:
+            self.workbook = load_workbook(self.workbook)     #check worksheet exist
+        except:
+            print(self.worksheet," , file not support!")     #worksheet note exist
+            exit();
+
+    def getWorksheetMaxRowCol(self):
+        for max_row, row in enumerate(self.worksheetObj, 1):
+            if all(c.value is None for c in row):
+                break
+
+    def letterNumRangeConverter(self, row_start, col_start, row_end, col_end):
+        # summary: Use this function to convert user inputed excel worksheet start end position to an openpyxl understandable start end position
+        # return [[row_start, col_start],[row_end, col_end]]
+        col_start_int = 0
+        col_end_int = 0
+        for i in col_start:
+            col_start_int = col_start_int * 26 + (ord(i.upper()) - ord('A')) + 1
+
+        for i in col_end:
+            col_end_int = col_end_int * 26 + (ord(i.upper()) - ord('A')) + 1
+        
+        return [[row_start, col_start_int], [row_end, col_end_int]]
+
+    def letterNumColConverter(self, col):
+        col_int = 0
+        for i in col:
+            col_int = col_int * 26 + (ord(i.upper()) - ord('A')) + 1
+        return col_int
+
+    def getCellData(self, row, col):
+        # summary: return the designated cell value, for test propuse only
+        cellObj = self.worksheetObj.cell(row = row, column = col)
+        return cellObj.value
+
+    def readLine(self, row):
         result = []
         for i in range(1, self.worksheet_col_cnt + 1):
             cellObj = self.worksheetObj.cell(row = row, column = i)
             result.append(str(cellObj.value))
+        return result
+
+    def readLineWithRange(self, row, col_start, col_end):
+        result = []
+        for i in range(col_start, col_end + 1):
+            cellObj = self.worksheetObj.cell(row = row, column = i)
+            result.append(str(cellObj.value))
+        return result
+
+    def readLineByUserDictRange(self, row, userDict):
+        result = []
+        userDictExcelList = []
+
+        userDictExcel = userDict[0:userDict.find("=")]
+        userDictExcel = userDictExcel.replace("[","")
+        userDictExcel = userDictExcel.replace("]","")
+
+        userDictExcelList= userDictExcel.split(",")
+
+        for i in range(0, len(userDictExcelList)):
+            cellObj = self.worksheetObj.cell(row = row, column = self.letterNumColConverter(userDictExcelList[i]))
+            result.append(str(cellObj.value))
+
         return result
