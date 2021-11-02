@@ -150,3 +150,14 @@ Prepared by:
 | Assignee          | Shutian Wang|
 | Status            | Open|
 | Task              | Read the dictionary inputed by user, assemble sql query and insert to the database line by line according to the user inputed dictionary|
+
+| TODO Task # 8      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-10-30 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-10-30 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Compile python model to dll let C++/C# program load it|

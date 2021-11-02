@@ -25,7 +25,7 @@ class myMySQLDB():
     myDBCursor = None
 
     #Init MySQL Database
-    def __init__( self, dbtype, dbip, dbport, dbuser, dbpass, dbname, mydbTable):
+    def __init__( self, dbtype, dbip, dbport, dbuser, dbpass, dbname, dbTable):
         if dbtype != "":
             self.myDBType = dbtype
         else:
@@ -61,8 +61,8 @@ class myMySQLDB():
             print("Database name cannot be empty!")
             exit()  
 
-        if mydbTable != "":
-            self.myDBTable = mydbTable
+        if dbTable != "":
+            self.myDBTable = dbTable
         else:
             print("Table name cannot be empty!")
             exit()

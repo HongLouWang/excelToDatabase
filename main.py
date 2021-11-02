@@ -12,7 +12,7 @@ import sys
 
 
 def main():
-    testCase5()
+    testCase6()
 
 def testCase():
 
@@ -42,6 +42,36 @@ def testCase5():
     for i in range(1, wb.worksheet_row_cnt + 1):
         line = wb.readLineByUserDictRange(i, "[A,B,C,D,E]=[id,c1,c2,c3,c4]")
         db.insertLineByUserDict("[A,B,C,D,E]=[id,c1,c2,c3,c4]", line, i)
+
+def testCase6():
+    workbook = sys.argv[1]
+    worksheet = sys.argv[2]
+
+    dbtype = sys.argv[3]
+    dbhost = sys.argv[4]
+    dbport = sys.argv[5]
+    dbuser = sys.argv[6]
+    dbpass = sys.argv[7]
+    dbname = sys.argv[8]
+    dbtable = sys.argv[9]
+
+    userDict = sys.argv[10]
+
+    db = myMySQLDB(dbtype=dbtype, dbip=dbhost, dbport=dbport, dbuser=dbuser, dbpass=dbpass, dbname=dbname, dbTable=dbtable)
+    wb = excel(workbook=workbook, worksheet=worksheet)
+
+    for i in range(1, wb.worksheet_row_cnt + 1):
+        line = wb.readLineByUserDictRange(i, userDict=userDict)
+        db.insertLineByUserDict(userDict=userDict, line=line, line_cnt=i)
+
+    # test command line: python main.py test1.xlsx Sheet1 mysql localhost 3306 root Ww20080811 pythontoexcel test1 [A,B,C,D,F]=[id,c1,c2,c3,c4]
+
+def testCase7():
+    print(sys.argv)
+    print(sys.argv[1])
+
+    a = input()
+
 
 if __name__ == "__main__":
     main()
