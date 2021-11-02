@@ -161,3 +161,36 @@ Prepared by:
 | Assignee          | Shutian Wang|
 | Status            | Open|
 | Task              | Compile python model to dll let C++/C# program load it|
+
+| TODO Task # 9      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-11-02 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-11-02 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Implement basic UI, it must have a menu, must have two listbar, one show loaded excel content, one show databast content|
+
+| TODO Task # 10      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-11-02 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-11-02 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Implement a Python method, read the excel content and pass it to the UI part|
+
+| TODO Task # 11      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-11-02 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-11-02 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Implement a Python method, read the database content and pass it to the UI part|
