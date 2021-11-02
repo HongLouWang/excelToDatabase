@@ -194,3 +194,25 @@ Prepared by:
 | Assignee          | Shutian Wang|
 | Status            | Open|
 | Task              | Implement a Python method, read the database content and pass it to the UI part|
+
+| TODO Task # 12      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-11-02 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-11-02 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Implement a function, read the excel data transfered from Python, update the UI, then delete the temporary file|
+
+| TODO Task # 13      |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| Iteration         | **3**   |
+| User case         | not signed                                       |
+| Create date       | 2021-11-02 |
+| Creator           | Shutian Wang |
+| Assign date       | 2021-11-02 |
+| Assignee          | Shutian Wang|
+| Status            | Open|
+| Task              | Implement a function, read the database data transfered from Python then delete the temporary file|
