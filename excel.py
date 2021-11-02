@@ -5,10 +5,7 @@
 #Project:   Load Excel To Database
 #############################################################################################
 
-from typing import overload
-# from dns.rdatatype import NULL
 from os.path import exists
-# from dns.rdatatype import NULL
 from openpyxl import load_workbook
 
 class excel():
@@ -48,6 +45,11 @@ class excel():
         except:
             print(self.worksheet," , file not support!")     #worksheet note exist
             exit();
+
+    def getWorksheetMaxRowCol(self):
+        for max_row, row in enumerate(self.worksheetObj, 1):
+            if all(c.value is None for c in row):
+                break
 
     def letterNumRangeConverter(self, row_start, col_start, row_end, col_end):
         # summary: Use this function to convert user inputed excel worksheet start end position to an openpyxl understandable start end position
